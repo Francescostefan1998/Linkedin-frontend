@@ -1,0 +1,342 @@
+#messageBar{
+    position: fixed;
+    right: 0px;
+
+    bottom: 0px;
+    height: 500px;
+    width: 350px;
+    background-color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+transition: 0.3s;
+transform: translateY(440px);
+    border: solid rgb(204, 204, 204) 1px;
+    box-shadow: 0px 0px 5px #888888;
+}
+#messageBar1{
+    position: fixed;
+    right: 0px;
+    bottom: -440px;
+    height: 500px;
+    width: 350px;
+    transition: 0.3s;
+transform: translateY(-440px);
+    background-color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    box-shadow: 0px 0px 5px #888888;
+
+    border: solid rgb(204, 204, 204) 1px;
+
+}
+
+#messageBar .messageBarFlex{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+#messageBar #messageBarTitle{
+    padding: 10px;
+    justify-content: space-between;
+    border-bottom: solid rgb(204, 204, 204) 1px;
+}
+
+#messageBar #messageBarImage{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+#messageBar #messageBarImage img{
+    object-fit: cover;
+    width: 100%;
+}
+
+#messageBar #messageBarMain{
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+}
+
+#messageBar #messageBarSearch{
+    cursor: pointer;
+    width: 90%;
+    border-radius: 6px;
+    overflow: hidden;
+    padding: 3px;
+    padding-inline: 10px;
+    justify-content: space-between;
+    text-align: center;
+    flex-grow: 1;
+    background-color: rgb(230, 240, 244);
+box-sizing: border-box;
+border: solid transparent 3px;
+margin-bottom: 20px
+
+}
+#messageBar #messageBarSearch:hover{
+     border: solid gray 3px
+}
+
+#messageBar #messageBarSearch input{
+    width: 100%;
+    border: 0;
+    background-color: transparent;
+}
+#messageBar #messageBarSearch input:focus{
+    outline: none;
+}
+#messageBar .singleChat{
+    width: 90%;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding-inline: 10px;
+    cursor: pointer;
+}
+#messageBar .singleChat:hover {
+    background-color: rgb(232, 230, 230);
+}
+#messageBar .singleChat:hover .date {
+    display: none;
+}
+#messageBar .none{
+    display: none;
+    margin-top: 2px;
+    margin-right: 2px;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    padding: 4px;
+
+}
+#messageBar .none:hover{
+    padding: 4px;
+    width: 25px;
+    height: 25px;
+    overflow: hidden;
+    text-align: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: rgb(203, 202, 202);
+}
+#messageBar .singleChat:hover .none {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#messageBar .chatImage{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+#messageBar .chatImage img{
+    object-fit: cover;
+    width: 100%;
+}
+#messageBar .chatContent{
+    display: flex;
+    flex-direction: column;
+    border-bottom: solid rgb(204, 204, 204) 1px;
+    width: 70%;
+    height: 100%;
+    overflow: hidden;
+    
+}
+#messageBar .chatContent p {
+    line-height: 1.5em;
+    font-size: 15px;
+}
+#messageBar .icon{
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+}
+#messageBar #icons{
+    gap: 5px
+}
+#messageBar .icon:hover{
+    background-color: rgb(232, 230, 230);
+   
+}
+#messageBar #messageBarTitle .icon{
+}
+#messageBar .messageBarFlex-chat{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+#messageBar .date{
+    font-size: 12px;
+}
+
+
+#messageBar1 .messageBarFlex{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+#messageBar1 #messageBarTitle{
+    padding: 10px;
+    justify-content: space-between;
+    border-bottom: solid rgb(204, 204, 204) 1px;
+}
+
+#messageBar1 #messageBarImage{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+#messageBar1 #messageBarImage img{
+    object-fit: cover;
+    width: 100%;
+}
+
+#messageBar1 #messageBarMain{
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+#messageBar1 #messageBarSearch{
+    cursor: pointer;
+    width: 90%;
+    border-radius: 6px;
+    overflow: hidden;
+    padding: 3px;
+    padding-inline: 10px;
+    justify-content: space-between;
+    text-align: center;
+    flex-grow: 1;
+    background-color: rgb(230, 240, 244);
+box-sizing: border-box;
+border: solid transparent 3px;
+margin-bottom: 20px
+
+}
+#messageBar1 #messageBarSearch:hover{
+     border: solid gray 3px
+}
+
+#messageBar1 #messageBarSearch input{
+    width: 100%;
+    border: 0;
+    background-color: transparent;
+}
+#messageBar1 #messageBarSearch input:focus{
+    outline: none;
+}
+#messageBar1 .singleChat{
+    width: 90%;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding-inline: 10px;
+    cursor: pointer;
+}
+#messageBar1 .singleChat:hover {
+    background-color: rgb(232, 230, 230);
+}
+#messageBar1 .singleChat:hover .date {
+    display: none;
+}
+#messageBar1 .none{
+    display: none;
+    margin-top: 2px;
+    margin-right: 2px;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    padding: 4px;
+
+}
+#messageBar1 .none:hover{
+    padding: 4px;
+    width: 25px;
+    height: 25px;
+    overflow: hidden;
+    text-align: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: rgb(203, 202, 202);
+}
+#messageBar1 .singleChat:hover .none {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#messageBar1 .chatImage{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+#messageBar1 .chatImage img{
+    object-fit: cover;
+    width: 100%;
+}
+#messageBar1 .chatContent{
+    display: flex;
+    flex-direction: column;
+    border-bottom: solid rgb(204, 204, 204) 1px;
+    width: 70%;
+    height: 100%;
+    overflow: hidden;
+    
+}
+#messageBar1 .chatContent p {
+    line-height: 1.5em;
+    font-size: 15px;
+}
+#messageBar1 .icon{
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+}
+#messageBar1 #icons{
+    gap: 5px
+}
+#messageBar1 .icon:hover{
+    background-color: rgb(232, 230, 230);
+   
+}
+#messageBar1 #messageBarTitle .icon{
+}
+#messageBar1 .messageBarFlex-chat{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+#messageBar1 .date{
+    font-size: 12px;
+}
+
+#scroll-messageBar{
+    width: 100%;
+overflow-y: scroll;
+height: 300px;}

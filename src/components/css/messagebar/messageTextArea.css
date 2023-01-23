@@ -1,0 +1,245 @@
+#messageTextArea{
+    position: fixed;
+    background-color: white;
+    overflow: hidden;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+border: solid rgb(212, 210, 210) 1px;
+    width: 500px;
+    height: 430px;
+    right: 370px;
+    display: flex;
+    flex-direction: column;
+    bottom: 0;
+    box-shadow: 0px 0px 5px #888888;
+}
+#messageTextArea1{
+    position: fixed;
+    background-color: white;
+    overflow: hidden;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+border: solid rgb(212, 210, 210) 1px;
+    width: 600px;
+    height: 500px;
+    right: 370px;
+    display: flex;
+    flex-direction: column;
+    bottom: 0;
+    box-shadow: 0px 0px 5px #888888;
+}
+#messageTextArea #flex-0{
+flex-grow: 1;
+}
+#messageTextArea1 #flex-0{
+flex-grow: 1;
+    
+}
+#messageTextArea #flex-1{
+ flex-grow: 0;   
+}
+#messageTextArea1 #flex-1{
+ flex-grow: 0;   
+}
+#messageTextArea #flex-2{
+   flex-grow: 1; 
+}
+#messageTextArea1 #flex-2{
+    flex-grow: 1; 
+    
+}
+#messageTextArea #flex-3{
+   flex-grow: 0; 
+    
+}
+#messageTextArea1 #flex-3{
+   flex-grow: 0; 
+    
+}
+#messageTextArea .icon{
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    color: rgb(111, 111, 111);
+}
+
+#messageTextArea #sendThis{
+    cursor: pointer;
+    height: 30px;
+border-radius: 15px;
+border: solid transparent 0px;
+text-align: center;
+width: 70px;
+background-color: rgb(226, 223, 223);
+}
+
+#messageTextArea .bortop{
+    border-top: solid rgb(198, 195, 195) 1px;
+}
+#messageTextArea #input{
+    margin-left: 10px ;
+    padding: 5px;
+    width: 80%;
+    border-radius: 15px;
+    border: solid transparent 2px;
+}
+#messageTextArea #input:hover{
+    margin-left: 10px ;
+    width: 80%;
+    border-radius: 15px;
+    border: solid black 2px;
+}
+#messageTextArea .white-space {
+    flex-grow: 1;
+    border-top: solid rgb(223, 222, 222) 3px;
+
+}
+#messageTextArea #textAreaSpace {
+    height: 100%;
+    width: 80%;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: rgb(226, 223, 223);
+padding: 10px
+}
+#messageTextArea #textAreaSpace textarea{
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    border: solid transparent 0px;
+    background-color: transparent;
+}
+
+#messageTextArea .icon:hover{
+    background-color: rgb(232, 230, 230);
+   
+}
+#messageTextArea .texAreaFlex{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+#messageTextArea1 .tex-justify{
+    justify-content: space-between;
+}
+#messageTextArea1 .icon{
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    color: rgb(111, 111, 111);
+}
+
+#messageTextArea1 #sendThis{
+    cursor: pointer;
+    height: 30px;
+border-radius: 15px;
+border: solid transparent 0px;
+text-align: center;
+width: 70px;
+background-color: rgb(226, 223, 223);
+}
+
+#messageTextArea1 .bortop{
+    border-top: solid rgb(198, 195, 195) 1px;
+}
+#messageTextArea1 #input{
+    margin-left: 10px ;
+    padding: 5px;
+
+    width: 80%;
+    border-radius: 15px;
+    border: solid transparent 2px;
+}
+#messageTextArea1 #input:hover{
+    margin-left: 10px ;
+    width: 80%;
+    border-radius: 15px;
+    border: solid black 2px;
+}
+#messageTextArea1 .white-space {
+    flex-grow: 1;
+    border-top: solid rgb(223, 222, 222) 3px;
+
+}
+
+#messageTextArea1 #textAreaSpace {
+    height: 100%;
+    width: 80%;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: rgb(226, 223, 223);
+padding: 10px
+}
+#messageTextArea1 #textAreaSpace textarea{
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    border: solid transparent 0px;
+    background-color: transparent;
+}
+
+#messageTextArea1 .icon:hover{
+    background-color: rgb(232, 230, 230);
+   
+}
+#messageTextArea1 .texAreaFlex{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+#messageTextArea .tex-justify{
+    justify-content: space-between;
+}
+#specialBarAnimation{
+    position: relative;
+    left: 0;
+    width: 600px;
+    height: 3px;
+    margin: 0;
+    padding: 0;
+    background-color:  rgb(212, 211, 211) ;
+overflow: hidden;
+}
+
+
+ #specialBarAnimationInside{
+    position: absolute;
+    top: 0px;
+    left: -600px;
+
+    width: 100%;
+    height: 3px;
+    background-color:  rgb(22, 91, 12) ;
+    transition-duration: 1s;
+   transform: translateX(600px);
+    background-color:  rgb(22, 91, 12) ;
+
+}
+/*.specialBarAnimationInside{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+
+    width: 100%;
+    height: 3px;
+    background-color:  rgb(22, 91, 12) ;
+    transition-duration: 0.6s;
+transform: translateX(-600px);
+}*/
+
+
+textarea:focus{
+    outline: none;
+}
