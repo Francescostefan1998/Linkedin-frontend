@@ -11,7 +11,7 @@ import { useDispatch } from "react-redux";
 
 export const NewPost = ({ user, handleClose, show }) => {
   const [image, setImage] = useState(null);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [newPost, setNewPost] = useState({
     text: "",
   });
@@ -28,15 +28,13 @@ export const NewPost = ({ user, handleClose, show }) => {
       const options = {
         headers: {
           "Content-Type": "application/json",
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk4M2ZkMDQwNWJkYTAwMTUwOTE4NDEiLCJpYXQiOjE2NzA5MjIxOTIsImV4cCI6MTY3MjEzMTc5Mn0.HboxcDkCT7oe0t-xsSrEFfXdJbKvdPnGhJVNYl9t1A0",
         },
         method: "POST",
         body: JSON.stringify(newPost),
       };
 
       const res = await fetch(
-        "https://striveschool-api.herokuapp.com/api/posts/",
+        "https://hilarious-toothbrush-production.up.railway.app/posts",
         options
       );
 
@@ -61,18 +59,18 @@ export const NewPost = ({ user, handleClose, show }) => {
           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk4M2ZkMDQwNWJkYTAwMTUwOTE4NDEiLCJpYXQiOjE2NzA5MjIxOTIsImV4cCI6MTY3MjEzMTc5Mn0.HboxcDkCT7oe0t-xsSrEFfXdJbKvdPnGhJVNYl9t1A0",
       },
       method: "POST",
-      body: data
+      body: data,
     };
 
     const response = await fetch(
       `https://striveschool-api.herokuapp.com/api/posts/${id}`,
       options
     );
-    handleClose()
+    handleClose();
     dispatch({
-      type: 'UPDATE_LATEST_POST',
-      payload: id
-    })
+      type: "UPDATE_LATEST_POST",
+      payload: id,
+    });
   };
 
   return (

@@ -9,9 +9,9 @@ import { useSelector } from "react-redux";
 
 export const MainContent = () => {
   const [posts, setPosts] = useState([]);
-  const { latestPost: latestPostId } = useSelector(state => state.user)
-  const [latestPost, setLatestPost] = useState(null)
-
+  const { latestPost: latestPostId } = useSelector((state) => state.user);
+  const [latestPost, setLatestPost] = useState(null);
+  console.log(posts);
   const getRandomPosts = (arr, num) => {
     const shuffled = [...arr].sort(() => 0.5 - Math.random());
 
@@ -19,56 +19,61 @@ export const MainContent = () => {
   };
 
   const getLatestPost = async (postId) => {
-    const options = {
+    /*const options = {
       headers: {
         Authorization:
           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk4M2ZkMDQwNWJkYTAwMTUwOTE4NDEiLCJpYXQiOjE2NzA5MjIxOTIsImV4cCI6MTY3MjEzMTc5Mn0.HboxcDkCT7oe0t-xsSrEFfXdJbKvdPnGhJVNYl9t1A0",
       },
-    };
+    };*/
 
-    const res = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${postId}`, options)
-    const data = await res.json()
-    setLatestPost(data)
-  }
+    const res = await fetch(
+      `https://hilarious-toothbrush-production.up.railway.app/posts/${postId}`
+    );
+    const data = await res.json();
+    setLatestPost(data);
+  };
 
   const getPosts = async () => {
-    const options = {
+    /*const options = {
       headers: {
         Authorization:
           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk4M2ZkMDQwNWJkYTAwMTUwOTE4NDEiLCJpYXQiOjE2NzA5MjIxOTIsImV4cCI6MTY3MjEzMTc5Mn0.HboxcDkCT7oe0t-xsSrEFfXdJbKvdPnGhJVNYl9t1A0",
       },
-    };
+    };*/
     const res = await fetch(
-      "https://striveschool-api.herokuapp.com/api/posts/",
-      options
+      "https://hilarious-toothbrush-production.up.railway.app/posts/"
     );
     const postsArr = await res.json();
-    const randomPosts = getRandomPosts(postsArr, 20);
-    setPosts(randomPosts);
+    console.log(postsArr);
+    //const randomPosts = getRandomPosts(postsArr, 20);
+    setPosts(postsArr);
   };
 
   useEffect(() => {
     getPosts();
-  }, []);
-
-  useEffect(() => {
-    getLatestPost(latestPostId);
+    //getLatestPost(latestPostId);
   }, [latestPostId]);
+
+  /*useEffect(() => {
+  }, [latestPostId]);*/
 
   return (
     <div className="main-content">
       <ProfileTop />
       <JobSearch />
       <StartPost />
-      {latestPost ? (<UserPost key={latestPost._id} post={latestPost}/>) : null}
-      {posts &&
+      {latestPost ? <UserPost key={latestPost._id} post={latestPost} /> : null}
+      {posts.length > 1 ? (
         posts.map((post) =>
-          post.image !== undefined && post.user ? (
+          post.image !== undefined && post.users ? (
             <UserPost key={post._id} post={post} />
           ) : (
             <div></div>
           )
-        )}
+        )
+      ) : (
+        <div></div>
+      )}
     </div>
   );
 };

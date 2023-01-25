@@ -3,7 +3,12 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 
-export const AddExperienceModal = ({ handleClose, show, user, refreshExperiences }) => {
+export const AddExperienceModal = ({
+  handleClose,
+  show,
+  user,
+  refreshExperiences,
+}) => {
   const [newExperience, setNewExperience] = useState({
     role: "",
     company: "",
@@ -11,6 +16,7 @@ export const AddExperienceModal = ({ handleClose, show, user, refreshExperiences
     area: "",
     startDate: "",
     endDate: "",
+    username: user._id,
   });
 
   const handleChange = (value, fieldToSet) => {
@@ -24,21 +30,19 @@ export const AddExperienceModal = ({ handleClose, show, user, refreshExperiences
     e.preventDefault();
 
     const options = {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk4M2ZkMDQwNWJkYTAwMTUwOTE4NDEiLCJpYXQiOjE2NzA5MjIxOTIsImV4cCI6MTY3MjEzMTc5Mn0.HboxcDkCT7oe0t-xsSrEFfXdJbKvdPnGhJVNYl9t1A0'
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(newExperience),
     };
 
     const res = await fetch(
-      `https://striveschool-api.herokuapp.com/api/profile/${user._id}/experiences`,
+      `https://hilarious-toothbrush-production.up.railway.app/users/${user._id}/experiences`,
       options
     );
-    
-    refreshExperiences()
 
+    refreshExperiences();
   };
 
   return (

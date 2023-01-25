@@ -1,15 +1,14 @@
 export const getUserProfile = () => {
   return async (dispatch, getState) => {
-    const options = {
+    /*const options = {
       headers: {
         Authorization:
           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzdmNWNmYWQ4MzkzNTAwMTVlOGM0YTUiLCJpYXQiOjE2NzQ0NjUxMjgsImV4cCI6MTY3NTY3NDcyOH0.w0jJ0XgMxZeslQivku-2ce45Dx9rwGNzfuz2_fesLS8",
       },
-    };
+    };*/
 
     const res = await fetch(
-      "https://striveschool-api.herokuapp.com/api/profile/me",
-      options
+      "https://hilarious-toothbrush-production.up.railway.app/users/63d14dae49b19c47d1ba1938"
     );
     const userData = await res.json();
     dispatch({

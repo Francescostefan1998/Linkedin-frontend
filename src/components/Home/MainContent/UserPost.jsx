@@ -7,34 +7,36 @@ import { PostStats } from "./UserPost/PostStats";
 import { UserInfo } from "./UserPost/UserInfo";
 
 const UserPost = ({ post }) => {
-
-  const [postData, setPostData] = useState(null)
-  const [userData, setUserData] = useState(null)
+  console.log(post);
+  const [postData, setPostData] = useState(null);
+  const [userData, setUserData] = useState(null);
 
   const getLatestPostUser = async (userId) => {
-    const options = {
+    /* const options = {
       headers: {
         Authorization:
           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk4M2ZkMDQwNWJkYTAwMTUwOTE4NDEiLCJpYXQiOjE2NzA5MjIxOTIsImV4cCI6MTY3MjEzMTc5Mn0.HboxcDkCT7oe0t-xsSrEFfXdJbKvdPnGhJVNYl9t1A0",
       },
-    };
+    };*/
 
-    const res = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${userId}`, options)
-    const data = await res.json()
-    console.log(data)
-    setUserData(data)
-  }
+    const res = await fetch(
+      `https://hilarious-toothbrush-production.up.railway.app/users/${userId}`
+    );
+    const data = await res.json();
+    console.log(data);
+    setUserData(data);
+  };
 
   useEffect(() => {
-    if(typeof post.user === 'string') {
-      getLatestPostUser(post.user)
+    if (post) {
+      console.log(post.users[0]);
+      getLatestPostUser(post.users[0]);
     } else {
-      setUserData(post.user)
+      setUserData(post.users[0]);
     }
 
-    setPostData(post)
-  }, [post])
-  
+    setPostData(post);
+  }, [post]);
 
   return (
     <div className="user-post">
