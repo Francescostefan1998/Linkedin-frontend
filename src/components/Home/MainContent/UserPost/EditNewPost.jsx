@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
+import axios from "axios";
 
 export const EditNewPost = ({ post, user }) => {
   console.log(post);
@@ -14,8 +15,11 @@ export const EditNewPost = ({ post, user }) => {
     text: post.text,
     username: post.username,
     image: post.image,
-    users: post.users,
+    likes: post.likes,
+    comments: post.comments,
   });
+  const [myimage, setMyImage] = useState();
+  console.log(myimage);
 
   const handleChange = (value, fieldToSet) => {
     setNewExperience({
@@ -24,9 +28,27 @@ export const EditNewPost = ({ post, user }) => {
     });
   };
 
+  async function uploadImage(image, mynewId) {
+    const formData = new FormData();
+    formData.append("image", image);
+    console.log("Upload triggered");
+    try {
+      const response = await axios.post(
+        `https://hilarious-toothbrush-production.up.railway.app/posts/${post._id}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      return response.data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const options = {
       method: "PUT",
       headers: {
@@ -39,6 +61,7 @@ export const EditNewPost = ({ post, user }) => {
       `https://hilarious-toothbrush-production.up.railway.app/posts/${post._id}`,
       options
     );
+    await uploadImage(myimage);
   };
 
   return (
@@ -53,48 +76,12 @@ export const EditNewPost = ({ post, user }) => {
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-        <Form.Label>Company</Form.Label>
+        <Form.Label>Picture</Form.Label>
         <Form.Control
-          type="text"
-          autoFocus
-          required
-          onChange={(e) => handleChange(e.target.value, "company")}
-        />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-        <Form.Label>Description</Form.Label>
-        <Form.Control
-          as="textarea"
-          autoFocus
-          rows={3}
-          required
-          onChange={(e) => handleChange(e.target.value, "description")}
-        />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-        <Form.Label>Location</Form.Label>
-        <Form.Control
-          required
-          onChange={(e) => handleChange(e.target.value, "area")}
-          type="text"
-        />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-        <Form.Label>Start Date</Form.Label>
-        <Form.Control
-          type="text"
-          autoFocus
-          required
-          onChange={(e) => handleChange(e.target.value, "startDate")}
-        />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-        <Form.Label>End Date</Form.Label>
-        <Form.Control
-          type="text"
-          autoFocus
-          required
-          onChange={(e) => handleChange(e.target.value, "endDate")}
+          className="file-input"
+          type="file"
+          placeholder="What do you want to talk about?"
+          onChange={(e) => setMyImage(e.target.files[0])}
         />
       </Form.Group>
       <Button variant="primary" type="submit">
