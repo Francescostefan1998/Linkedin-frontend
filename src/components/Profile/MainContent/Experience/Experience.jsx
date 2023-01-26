@@ -60,15 +60,11 @@ export const Experience = ({ experience, canEdit, refreshExperiences }) => {
 
   const handleDelete = async () => {
     const options = {
-      headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk4M2ZkMDQwNWJkYTAwMTUwOTE4NDEiLCJpYXQiOjE2NzA5MjIxOTIsImV4cCI6MTY3MjEzMTc5Mn0.HboxcDkCT7oe0t-xsSrEFfXdJbKvdPnGhJVNYl9t1A0",
-      },
       method: "DELETE",
     };
 
     await fetch(
-      `https://striveschool-api.herokuapp.com/api/profile/${user._id}/experiences/${experience._id}`,
+      `https://hilarious-toothbrush-production.up.railway.app/users/${user._id}/experiences/${experience._id}`,
       options
     );
     refreshExperiences();

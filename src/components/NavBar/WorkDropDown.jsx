@@ -4,6 +4,33 @@ import "../css/navBar/workDropDown.css";
 import { RxCross1 } from "react-icons/rx";
 
 export const WorkDropDown = ({ disappear, workDropDown }) => {
+  /*const fetchPdf = async () => {
+    console.log("fetched pdf started");
+    const response = await fetch(
+      "https://hilarious-toothbrush-production.up.railway.app/users/profile/jj/pdf"
+    );
+    console.log(response);
+    const data = await response.json();
+    console.log(data);
+  };*/
+  const fetchPdf = async () => {
+    try {
+      console.log("fetched pdf started");
+
+      const response = await fetch(
+        "https://hilarious-toothbrush-production.up.railway.app/users/profile/jj/pdf"
+      );
+      const blob = await response.blob();
+      const reader = new FileReader();
+      reader.readAsDataURL(blob);
+      reader.onload = () => {
+        const pdfData = reader.result;
+        // Use the pdfData here
+      };
+    } catch (err) {
+      console.error(err);
+    }
+  };
   return (
     <div id="dropDownWork-overflow-scroll">
       <div id="dropDownWork-title-sticky">
@@ -366,7 +393,13 @@ export const WorkDropDown = ({ disappear, workDropDown }) => {
               </a>
             </div>
           </div>
-          <div id="bottomSubtitle">
+          <a
+            href="https://hilarious-toothbrush-production.up.railway.app/users/profile/jj/pdf"
+            download
+          >
+            Download PDF
+          </a>
+          <div id="bottomSubtitle" onClick={() => fetchPdf()}>
             <div>
               <h6>Generate Page</h6>
             </div>

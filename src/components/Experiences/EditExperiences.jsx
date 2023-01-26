@@ -10,16 +10,15 @@ export const EditExperiences = () => {
   const [experiences, setExperiences] = useState([]);
 
   const getExperiences = async () => {
-    const options = {
+    /*const options = {
       headers: {
         Authorization:
           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk4M2ZkMDQwNWJkYTAwMTUwOTE4NDEiLCJpYXQiOjE2NzA5MjIxOTIsImV4cCI6MTY3MjEzMTc5Mn0.HboxcDkCT7oe0t-xsSrEFfXdJbKvdPnGhJVNYl9t1A0",
       },
-    };
+    };*/
     if (user) {
       const res = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/${user._id}/experiences`,
-        options
+        `https://hilarious-toothbrush-production.up.railway.app/users/${user._id}/experiences`
       );
       const data = await res.json();
       setExperiences(data);
@@ -33,7 +32,7 @@ export const EditExperiences = () => {
   return (
     <Container className="pb-5">
       <div className="edit-experiences">
-          <h3 className="mb-5">Edit Experiences</h3>
+        <h3 className="mb-5">Edit Experiences</h3>
         {experiences.map((exp) => (
           <Experience
             key={exp._id}
