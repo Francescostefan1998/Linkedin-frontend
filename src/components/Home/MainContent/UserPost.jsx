@@ -39,12 +39,16 @@ const UserPost = ({ post }) => {
   }, [post]);
 
   return (
-    <div className="user-post">
-      <UserInfo user={userData} />
-      <PostDescription post={postData} />
-      <PostContent post={postData} />
-      <PostStats post={postData} />
-      <PostControls post={postData} />
+    <div>
+      {userData && (
+        <div className="user-post">
+          <UserInfo user={userData} post={postData} />
+          <PostDescription post={postData} />
+          <PostContent post={postData} />
+          <PostStats post={postData} />
+          <PostControls post={postData} />
+        </div>
+      )}
     </div>
   );
 };

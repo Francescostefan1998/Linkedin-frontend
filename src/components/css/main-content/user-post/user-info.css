@@ -86,3 +86,67 @@
     background-color: #0a66c215;
     color: rgb(95 155 65);
 }
+
+.user-info-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:10px;
+}
+
+.user-info-top-big {
+    padding-inline: 20px
+
+}
+
+.user-info-top-big hr{
+    margin: 0;
+    margin-inline: 5px
+}
+
+.user-info-top-left{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 5px;
+    gap: 20px;
+
+}
+
+.user-info-top-left-image {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.user-info-top-left-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.userInfo-dots{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.userInfo-dots:hover{
+    cursor: pointer;
+    background-color: #8f8f8f15;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.absolute-Positioning{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 200px;
+    border-radius: 10px
+}
