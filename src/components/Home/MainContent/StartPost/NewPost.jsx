@@ -8,17 +8,25 @@ import { HiDocumentText } from "react-icons/hi";
 import { MdOutlineWatchLater } from "react-icons/md";
 import { Modal, Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
+import axios from "axios";
 
 export const NewPost = ({ user, handleClose, show }) => {
+  console.log(user);
   const [image, setImage] = useState(null);
   const dispatch = useDispatch();
   const [newPost, setNewPost] = useState({
-    text: "",
+    username: "d",
+    likes: [],
+    comments: [],
+    text: "m",
+    image: "jj",
+    users: "",
   });
 
   const handleChange = (value, fieldToSet) => {
     setNewPost({
       ...newPost,
+      users: user._id,
       [fieldToSet]: value,
     });
   };
@@ -37,14 +45,14 @@ export const NewPost = ({ user, handleClose, show }) => {
         "https://hilarious-toothbrush-production.up.railway.app/posts",
         options
       );
-
+      console.log("before Id");
       const { _id } = await res.json();
       console.log(_id);
+      console.log("after Id");
+
       try {
-        const formData = new FormData();
-        formData.append("post", image);
         if (_id) {
-          submitImage(formData, _id);
+          submitImage(image, _id);
         }
       } catch (err) {
         console.log(err);
@@ -52,26 +60,25 @@ export const NewPost = ({ user, handleClose, show }) => {
     }
   };
 
-  const submitImage = async (data, id) => {
-    const options = {
-      headers: {
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2Mzk4M2ZkMDQwNWJkYTAwMTUwOTE4NDEiLCJpYXQiOjE2NzA5MjIxOTIsImV4cCI6MTY3MjEzMTc5Mn0.HboxcDkCT7oe0t-xsSrEFfXdJbKvdPnGhJVNYl9t1A0",
-      },
-      method: "POST",
-      body: data,
-    };
-
-    const response = await fetch(
-      `https://striveschool-api.herokuapp.com/api/posts/${id}`,
-      options
-    );
-    handleClose();
-    dispatch({
-      type: "UPDATE_LATEST_POST",
-      payload: id,
-    });
-  };
+  async function submitImage(image, id) {
+    const formData = new FormData();
+    formData.append("image", image);
+    console.log("Upload triggered");
+    try {
+      const response = await axios.post(
+        `https://hilarious-toothbrush-production.up.railway.app/posts/${id}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      return response.data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   return (
     <Modal show={show} onHide={handleClose}>
