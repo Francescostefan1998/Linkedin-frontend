@@ -5,15 +5,16 @@ import Modal from "react-bootstrap/Modal";
 
 export const EditNewPost = ({ post, user }) => {
   console.log(post);
+  /*text:{type:String, required:true},
+         username:{type:String, required:true},
+         image:{type:String, required:true},
+         users: [{ type: Schema.Types.ObjectId, ref: "User" }],*/
 
   const [newExperience, setNewExperience] = useState({
-    role: "",
-    company: "",
-    description: "",
-    area: "",
-    startDate: "",
-    endDate: "",
-    username: user._id,
+    text: post.text,
+    username: post.username,
+    image: post.image,
+    users: post.users,
   });
 
   const handleChange = (value, fieldToSet) => {
@@ -43,12 +44,12 @@ export const EditNewPost = ({ post, user }) => {
   return (
     <Form onSubmit={(e) => handleSubmit(e)}>
       <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-        <Form.Label>Role</Form.Label>
+        <Form.Label>Description</Form.Label>
         <Form.Control
           type="text"
           autoFocus
           required
-          onChange={(e) => handleChange(e.target.value, "role")}
+          onChange={(e) => handleChange(e.target.value, "text")}
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
