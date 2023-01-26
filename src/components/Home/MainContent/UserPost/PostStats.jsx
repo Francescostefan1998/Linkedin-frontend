@@ -1,11 +1,10 @@
 import React from "react";
 import "../../../css/main-content/user-post/post-stats.css";
 import { FaThumbsUp } from "react-icons/fa";
-
-export const PostStats = () => {
-
-  const randomLikesNum = Math.floor(Math.random() * 3000);
-  const randomCommsNum = Math.floor(Math.random() * 500);
+import { useState } from "react";
+import { useEffect } from "react";
+export const PostStats = ({ post }) => {
+  console.log(post);
 
   return (
     <div className="post-stats">
@@ -13,10 +12,12 @@ export const PostStats = () => {
         <div className="icon-container">
           <FaThumbsUp className="icon" />
         </div>
-        <span className="likes-count">{randomLikesNum > 999 ? `${randomLikesNum.toString()[0]}k` : randomLikesNum}</span>
+        <span className="likes-count">
+          {post && <span>{post.likes.length}</span>}
+        </span>
       </div>
       <div className="comments-container">
-        <span className="text">{randomCommsNum} comments</span>
+        <span className="text">{post.comments.length} comments</span>
       </div>
     </div>
   );
