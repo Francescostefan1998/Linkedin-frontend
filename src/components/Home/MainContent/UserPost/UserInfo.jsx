@@ -7,13 +7,28 @@ import { EditNewPost } from "./EditNewPost";
 export const UserInfo = ({ user, post }) => {
   const navigate = useNavigate();
   console.log(user);
+  console.log(post);
   const [userTitle, setUserTitle] = useState("");
   const [allow, setAllow] = useState(false);
+  const [myUser, setMyUser] = useState(user);
   const randomTimeNum = Math.floor(Math.random() * 24) + 1;
   console.log(allow);
+  const getfetchedData = async () => {
+    try {
+      const response = await fetch(
+        `https://hilarious-toothbrush-production.up.railway.app/users/${post.users}`
+      );
+      const data = await response.json();
+      setMyUser(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
-    if (user) {
-      setUserTitle(typeof user.title === "string" ? user.title.trim() : "");
+    if (post) {
+      getfetchedData();
+
+      //setUserTitle(typeof myUser.title === "string" ? myUser.title.trim() : "");
     }
   }, [user, allow]);
 
@@ -25,14 +40,14 @@ export const UserInfo = ({ user, post }) => {
             <div className="user-info-top-left-image">
               <img
                 src={
-                  user && user.image !== undefined
-                    ? user.image
+                  myUser && myUser.image !== undefined
+                    ? myUser.image
                     : "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
                 }
                 alt="profile-image"
               />
             </div>
-            <div>Suggested from {user.name}</div>
+            <div>Suggested from {myUser.name}</div>
           </div>
           <div className="userInfo-dots">
             <BsThreeDots
@@ -46,7 +61,7 @@ export const UserInfo = ({ user, post }) => {
         {allow && (
           <EditNewPost
             post={post}
-            user={user}
+            user={myUser}
             className="absolute-Positioning"
           />
         )}
@@ -56,10 +71,10 @@ export const UserInfo = ({ user, post }) => {
         <div className="user-info">
           <div className="img-container">
             <img
-              onClick={() => navigate(`/profile/${user._id}`)}
+              onClick={() => navigate(`/profile/${myUser._id}`)}
               src={
-                user.image
-                  ? user.image
+                myUser.image
+                  ? myUser.image
                   : "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png"
               }
               alt=""
@@ -70,7 +85,7 @@ export const UserInfo = ({ user, post }) => {
             <span
               className="user-name"
               onClick={() => navigate(`/profile/${user._id}`)}
-            >{`${user.name} ${user.surname}`}</span>
+            >{`${myUser.name} ${myUser.surname}`}</span>
             <span className="user-title">{userTitle}</span>
             <span className="time-passed">
               <span>{randomTimeNum === 24 ? "1d" : `${randomTimeNum}h`}</span>
