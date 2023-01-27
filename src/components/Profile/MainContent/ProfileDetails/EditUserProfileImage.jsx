@@ -33,23 +33,50 @@ export default function EditUserProfileImage({ user }) {
       console.error(error);
     }
   }
+
   return (
-    <div className="pictureUploader">
-      <h5>Picture Uploader</h5>
+    <div className="file-uploader" >
+      <div className="file-uploader__message-area">
+        <p> New Picture Upload</p>
+      </div>
       {user._id && (
-        <div>
+        <div className="file-chooser">
           <input
+            className="file-chooser__input"
             type="file"
             onChange={(e) => {
               setImage(e.target.files[0]);
             }}
           />
-          <br />
-
-          <hr />
-          <button onClick={uploadImage}>Upload</button>
         </div>
       )}
+      <input
+        className="file-uploader__submit-button"
+        onClick={uploadImage}
+        type="submit"
+        value="Upload"
+      />
+     <hr/>
     </div>
   );
 }
+
+// return (
+//   <div className="pictureUploader">
+//     <h5>Picture Uploader</h5>
+//     {user._id && (
+//       <div>
+//         <input
+//           type="file"
+//           onChange={(e) => {
+//             setImage(e.target.files[0]);
+//           }}
+//         />
+//         <br />
+
+//         <hr />
+//         <button onClick={uploadImage}>Upload</button>
+//       </div>
+//     )}
+//   </div>
+// );
