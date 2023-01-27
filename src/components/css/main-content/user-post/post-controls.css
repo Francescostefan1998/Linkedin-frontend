@@ -70,3 +70,11 @@
     gap: 10px;
     margin-right: 10px;
 }
+
+.addAcomment-commentList{
+    margin: 10px;
+    box-sizing: border-box;
+    border-top: 1px solid grey;
+    text-align: left;
+    padding-inline: 10px
+}

@@ -15,17 +15,33 @@ import { useStore } from "react-redux";
 import { useSelector } from "react-redux";
 
 export const AddAComment = ({ post }) => {
+  console.log(post);
+  const [refresh, setRefresh] = useState("");
+
   const { user: currentUser } = useSelector((state) => state.user);
   const [mycomment, setComment] = useState({
     post: post._id,
     comment: "f",
     username: currentUser._id,
   });
+  const [postComments, setListComments] = useState([]);
+
   console.log(mycomment);
+
+  const getComment = async (e) => {
+    const res = await fetch(
+      `https://hilarious-toothbrush-production.up.railway.app/posts/${post._id}/comments`
+    );
+    const data = await res.json();
+    console.log(data);
+    setListComments(data.reverse());
+    setRefresh(data.length);
+  };
 
   useEffect(() => {
     console.log(post);
-  }, [post]);
+    getComment();
+  }, [refresh]);
   const postComment = async () => {
     const res = await fetch(
       `https://hilarious-toothbrush-production.up.railway.app/posts/${post._id}/comments`,
@@ -38,6 +54,8 @@ export const AddAComment = ({ post }) => {
       }
     );
     const data = await res.json();
+    console.log(data);
+
     return data;
   };
   return (
@@ -61,9 +79,17 @@ export const AddAComment = ({ post }) => {
         </div>
       </div>
       <div>
-        {post.comments.map((comment, index) => (
-          <div>{comment.comment}</div>
-        ))}
+        {postComments.length > 0 ? (
+          <div>
+            {postComments.map((comment, index) => (
+              <div className="addAcomment-commentList">
+                {index + 1}, {comment.comment}
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div></div>
+        )}
       </div>
     </div>
   );
