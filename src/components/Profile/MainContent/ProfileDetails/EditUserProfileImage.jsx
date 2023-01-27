@@ -17,7 +17,7 @@ export default function EditUserProfileImage({ user }) {
     console.log("Upload triggered");
     try {
       const response = await axios.post(
-        `https://hilarious-toothbrush-production.up.railway.app/users/${user._id}`,
+        `https://hilarious-toothbrush-production.up.railway.app/users/${user._id}/picture`,
         formData,
         {
           headers: {
@@ -25,6 +25,9 @@ export default function EditUserProfileImage({ user }) {
           },
         }
       );
+      if (response.ok) {
+        alert("Image uploaded successfully");
+      }
       return response.data;
     } catch (error) {
       console.error(error);
