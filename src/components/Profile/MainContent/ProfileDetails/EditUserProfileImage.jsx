@@ -4,46 +4,49 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import newChatReducer from "../../../../redux/reducers/NewChatReducer";
 import { useEffect } from "react";
-export default function EditUserProfileImage() {
+import axios from "axios";
+export default function EditUserProfileImage({ user }) {
   const dispatch = useDispatch();
   const [image, setImage] = useState(null);
   const [helper, setHelper] = useState("");
+  console.log(user);
 
-  const uploadImage = async () => {
+  async function uploadImage() {
+    const formData = new FormData();
+    formData.append("image", image);
+    console.log("Upload triggered");
     try {
-      const formData = new FormData();
-      formData.append("profile", image);
-      let resp = await fetch(
-        "https://hilarious-toothbrush-production.up.railway.app/users/63d14dae49b19c47d1ba1938/picture",
+      const response = await axios.post(
+        `https://hilarious-toothbrush-production.up.railway.app/users/${user._id}`,
+        formData,
         {
-          method: "POST",
-          body: formData,
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
         }
       );
-      if (resp.ok) {
-        setHelper("ok");
-      } else {
-        setHelper("not");
-      }
+      return response.data;
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
-  };
-
+  }
   return (
     <div className="pictureUploader">
       <h5>Picture Uploader</h5>
+      {user._id && (
+        <div>
+          <input
+            type="file"
+            onChange={(e) => {
+              setImage(e.target.files[0]);
+            }}
+          />
+          <br />
 
-      <input
-        type="file"
-        onChange={(e) => {
-          setImage(e.target.files[0]);
-        }}
-      />
-      <br />
-
-      <hr />
-      <button onClick={uploadImage}>Upload</button>
+          <hr />
+          <button onClick={uploadImage}>Upload</button>
+        </div>
+      )}
     </div>
   );
 }

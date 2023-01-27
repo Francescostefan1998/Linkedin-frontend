@@ -46,7 +46,7 @@ export const MainContent = () => {
     const postsArr = await res.json();
     console.log(postsArr);
     //const randomPosts = getRandomPosts(postsArr, 20);
-    setPosts(postsArr);
+    setPosts(postsArr.reverse());
   };
 
   useEffect(() => {

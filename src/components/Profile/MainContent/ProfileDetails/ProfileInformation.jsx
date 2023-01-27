@@ -42,7 +42,7 @@ export const ProfileInformation = ({ user }) => {
               alt=""
             />
             {showEditProfilePicture === true ? (
-              <EditUserProfileImage className="pictureUploader" />
+              <EditUserProfileImage className="pictureUploader" user={user} />
             ) : (
               ""
             )}

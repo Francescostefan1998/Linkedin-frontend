@@ -61,7 +61,25 @@ export const EditNewPost = ({ post, user }) => {
       `https://hilarious-toothbrush-production.up.railway.app/posts/${post._id}`,
       options
     );
+    if (res.ok) {
+      window.alert("Post edited successfully!");
+    }
     await uploadImage(myimage);
+  };
+  const deleteProduct = async () => {
+    const options = {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    const res = await fetch(
+      `https://hilarious-toothbrush-production.up.railway.app/posts/${post._id}`,
+      options
+    );
+    if (res.ok) {
+      window.alert("Post deleted successfully!");
+    }
   };
 
   return (
@@ -84,9 +102,14 @@ export const EditNewPost = ({ post, user }) => {
           onChange={(e) => setMyImage(e.target.files[0])}
         />
       </Form.Group>
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+        <Button variant="danger" onClick={(e) => deleteProduct()}>
+          Delete product
+        </Button>
+      </div>
     </Form>
   );
 };
