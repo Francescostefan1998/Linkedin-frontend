@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useStore } from "react-redux";
 import { useSelector } from "react-redux";
+import { AddAComment } from "./AddAComment";
 export const PostControls = ({ post }) => {
   const { user: currentUser } = useSelector((state) => state.user);
   console.log(currentUser);
@@ -14,12 +15,14 @@ export const PostControls = ({ post }) => {
     username: currentUser._id,
     post: post._id,
   });
+
+  const [show, setShow] = useState("falsee");
   useEffect(() => {}, [currentUser]);
 
   const fetchLike = async (query) => {
     console.log(query);
     const options = {
-      method: query === true ? "POST" : "DELETE",
+      method: query === "truee" ? "POST" : "DELETE",
       headers: {
         "Content-Type": "application/json",
       },
@@ -39,44 +42,51 @@ export const PostControls = ({ post }) => {
       `https://hilarious-toothbrush-production.up.railway.app/posts/${post._id}`
     );
     const data = await response.json();
-    if (data.likes.includes(currentUser._id)) {
+    console.log(data.likes);
+    const findUser = data.likes.find((like) => like === currentUser._id);
+    console.log(findUser);
+    if (findUser) {
       console.log(like);
-      setLike(true);
-    } else {
+
       setLike(false);
+      fetchLike("falsee");
+    } else {
+      setLike(true);
+      fetchLike("truee");
     }
   };
 
   const handleLike = async () => {
     await checkIfItIsLike();
-    console.log("handleLike triggered");
-    if (like) {
-      setLike(false);
-      fetchLike(false);
+  };
+  const showComment = async () => {
+    if (show === "truee") {
+      setShow("falsee");
     } else {
-      setLike(true);
-      fetchLike(true);
+      setShow("truee");
     }
   };
-
   return (
-    <div className="post-controls">
-      <div className="control-container" onClick={(e) => handleLike()}>
-        <FaThumbsUp className="icon" />
-        <span className="text">Like</span>
+    <div>
+      <div className="post-controls">
+        <div className="control-container" onClick={(e) => handleLike()}>
+          <FaThumbsUp className="icon" />
+          <span className="text">Like</span>
+        </div>
+        <div className="control-container" onClick={(e) => showComment()}>
+          <FaRegComment className="icon" />
+          <span className="text">Comment</span>
+        </div>
+        <div className="control-container">
+          <FaShareAlt className="icon" />
+          <span className="text">Repost</span>
+        </div>
+        <div className="control-container">
+          <FiSend className="icon" />
+          <span className="text">Send</span>
+        </div>
       </div>
-      <div className="control-container">
-        <FaRegComment className="icon" />
-        <span className="text">Comment</span>
-      </div>
-      <div className="control-container">
-        <FaShareAlt className="icon" />
-        <span className="text">Repost</span>
-      </div>
-      <div className="control-container">
-        <FiSend className="icon" />
-        <span className="text">Send</span>
-      </div>
+      <div>{show === "truee" ? <AddAComment post={post} /> : <div></div>}</div>
     </div>
   );
 };

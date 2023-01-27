@@ -22,3 +22,51 @@
     margin-right: 5px;
     transform: translateY(-2px);
 }
+
+.addAcomment-flex{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px;
+    padding: 10px;
+    gap: 10px
+}
+
+.addComment-image{
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.addComment-image img {
+    width: 100%;
+    object-fit: contain;
+}
+
+.addComment-input{
+    height: 30px;
+    box-sizing: border-box;
+    border: 1px solid grey;
+    border-radius: 15px;
+    overflow: hidden;
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.addComment-input input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    padding-inline: 10px
+}
+
+.addAcomment-flex-icons{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-right: 10px;
+}
