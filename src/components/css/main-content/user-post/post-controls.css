@@ -1,9 +1,16 @@
+:root {
+    --grey-font-color: #797979;
+    --grey-background-color: #e4e4e4;
+
+  }
+  
+
 .post-controls {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin: 5px 20px;
-    color: grey;
+    color: var(--grey-font-color);
 }
 
 .post-controls .control-container {
@@ -13,7 +20,7 @@
 }
 
 .post-controls .control-container:hover {
-    background-color: rgba(204, 204, 204, 0.479);
+    background-color: var(--grey-background-color);
     cursor: pointer;
 }
 
@@ -72,9 +79,125 @@
 }
 
 .addAcomment-commentList{
+    display: flex;
+    flex-direction: column;
     margin: 10px;
+    padding: 10px;
     box-sizing: border-box;
-    border-top: 1px solid grey;
+    background-color: var(--grey-background-color);
     text-align: left;
+    padding-inline: 10px;
+    flex-grow: 1;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+overflow: hidden;
+
+}
+
+.addAcomment-commentList-top{
+    display: flex;
+    align-items: center;
+
+    justify-content: space-between;
+}
+.sectionOnTheTop .gray{
+    color: var(--grey-font-color)
+}
+.addAcomment-commentList-top>.sectionOnTheTop{
+    display: flex;
+    align-items: center;
+gap: 10px;
+}
+
+.AddAcomment-mostRelevant{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+padding: 20px;
+color: var(--grey-font-color)
+}
+
+
+
+.AddAcomment-mostRelevant.loads {
+    padding-left: 40px;
+}
+
+.addComment-arrow-icon{
+    cursor: pointer;
+    font-size: 30px;
+    margin-left: -13px;
+    margin-top: 2px;
+}
+
+.addAcomment-singleComment{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 20px
+}
+
+.addAcomment-singleComment-picture{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.sectionOnTheTop.baseLine{
+    align-items: baseline;
+}
+
+
+.sectionOnTheTop .dots{
+    font-size: 20px;
+    margin-top: -3px;
+    margin-left: -3px
+}
+
+.addAcomment-singleComment-main{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.addAcomment-singleComment .under-message{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
     padding-inline: 10px
+}
+
+.addAcomment-singleComment .message-flex{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px
+}
+
+.addAcomment-singleComment .message-flex-verticla-line{
+    width: 1px;
+    height: 20px;
+    background-color: black;
+    box-sizing: border-box;
+margin-bottom: -3px;
+}
+.addAcomment-commentList .big-space{
+    flex-grow: 1;
+    align-items: baseline;
+    margin-top: 20px;
+}
+.addAcomment-commentList .twodash{
+    margin-top: -20px;
+}
+.addAcomment-singleComment .dot{
+    font-size: 10px;
+}
+
+.addAcomment-singleComment .like{
+    cursor: pointer;
 }
