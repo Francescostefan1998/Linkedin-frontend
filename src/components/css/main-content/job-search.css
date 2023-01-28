@@ -36,3 +36,15 @@
     box-shadow: inset 0 0 0 2px;
     background-color: #0a66c223;
 }
+
+@media screen and (max-width: 778px) {
+    .job-search .btns-container .btn {
+        padding: 5px 50px;
+    }
+  }
+
+  @media screen and (max-width: 578px) {
+    .job-search .btns-container .btn {
+        padding: 5px 40px;
+    }
+  }

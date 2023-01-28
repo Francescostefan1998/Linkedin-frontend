@@ -29,3 +29,9 @@
     color: #777;
     font-weight: 500;
 }
+
+@media screen and (max-width: 778px) {
+    .btn-container span{
+        display: none;
+    }
+  }

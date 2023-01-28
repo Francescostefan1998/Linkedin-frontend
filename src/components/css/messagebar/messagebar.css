@@ -340,3 +340,12 @@ margin-bottom: 20px
     width: 100%;
 overflow-y: scroll;
 height: 300px;}
+
+@media screen and (max-width: 778px) {
+    #messageBar{
+        display: none;
+    }
+    #messageBar1{
+ display: none;
+    }
+  }

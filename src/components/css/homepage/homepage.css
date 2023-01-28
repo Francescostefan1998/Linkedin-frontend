@@ -2,13 +2,22 @@ body {
   padding: 0;
   margin: 0;
 }
-
+.homepage{
+  padding-inline: 10%
+}
 /* @media screen and (max-width: 928px) {
   .main-content {
     width: 70vh;
   }
 }
  */
+
+ @media screen and (max-width: 1024px) {
+  .homepage{
+    padding-inline: 0%
+  }
+}
+
 
 @media screen and (max-width: 767px) {
   #leftSideBarStyle {

@@ -35,9 +35,9 @@
 }
 #position-fixed-footer {
   top: 420px;
-  right: 60px;
+  right: 105px;
   position: fixed;
-  width: 27%;
+  width: 23.5%;
 }
 
 @media screen and (max-width: 992px) {

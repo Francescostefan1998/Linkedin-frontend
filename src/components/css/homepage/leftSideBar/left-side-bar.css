@@ -202,8 +202,8 @@
   background-color: white;
   position: fixed;
   top: 70px;
-  width: 18.5%;
-  left: 80px;
+  width: 15%;
+  left: 200px;
   border-radius: 15px;
   border: solid rgb(188, 186, 186) 1px;
   overflow: hidden;
@@ -214,8 +214,8 @@
     background-color: white;
     position: fixed;
     top: 100px;
-    width: 20%;
-    left: 40px;
+    width: 18%;
+    left: 140px;
     border-radius: 15px;
     border: solid rgb(188, 186, 186) 1px;
     overflow: hidden;
@@ -227,8 +227,22 @@
     background-color: white;
     position: fixed;
     top: 100px;
-    width: 20%;
-    left: 50px;
+    width: 19%;
+    left: 100px;
+    border-radius: 15px;
+    border: solid rgb(188, 186, 186) 1px;
+    overflow: hidden;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  #position-fixed-sidebar {
+    background-color: white;
+    position: fixed;
+    top: 100px;
+    width: 14%;
+    left: 100px;
     border-radius: 15px;
     border: solid rgb(188, 186, 186) 1px;
     overflow: hidden;

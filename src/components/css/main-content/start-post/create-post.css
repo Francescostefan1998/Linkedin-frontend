@@ -42,4 +42,16 @@
     font-weight: 500;
 }
 
+@media screen and (max-width: 778px) {
+    .create-post input {
+        width: 100%;
+        margin-left: 10px;
+        border-radius: 30px;
+        border: 1px solid grey;
+        padding-left: 10px;
+        transition: .2s;
+    }
+  }
+  
+
 

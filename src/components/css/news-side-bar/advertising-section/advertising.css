@@ -9,9 +9,9 @@
 }
 #position-fixed-newbar {
   top: 70px;
-  right: 35px;
+  right: 105px;
   position: fixed;
-  width: 30%;
+  width: 23.5%;
 }
 .advertising .dot {
   display: flex;
