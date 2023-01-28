@@ -216,6 +216,28 @@ border: solid transparent 0px;
             padding-inline: 0%;
 
         }
+        #youDropdown{
+            width: 230px;
+        }
+        #workDropDown{
+            position: absolute;
+            right: -350px;
+            top: 62px;
+            width: 350px;
+            background-color: white;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+            border: solid rgb(188, 186, 186) 1px;
+            overflow: hidden;
+            padding: 30px;
+            transition-timing-function: ease-in;
+            overflow-y: scroll;
+            height: 89vh;
+          transition: 0.5s;
+          transform: translateX(-350px);
+        
+        
+        }
       }
 
       @media screen and (max-width: 550px) {

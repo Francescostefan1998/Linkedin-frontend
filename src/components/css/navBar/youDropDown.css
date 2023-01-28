@@ -56,3 +56,17 @@ padding: 20px
     text-decoration: underline;
 }
 
+
+@media screen and (max-width: 778px) {
+    #youDropdown{
+        width: 200px;
+    }
+    #youDropDownProfile{
+        width: 50px;
+        height: 50px;
+    }
+    #youDropDown-profiledescription .second-div{
+        width: 60%;
+        margin-left: 10px;
+    }
+  }
