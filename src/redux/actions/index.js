@@ -26,6 +26,15 @@ export const newTextArea = (userName) => {
   };
   console.log(userName);
 };
+export const newPostAction = (post) => {
+  return async (dispatch, getState) => {
+    dispatch({
+      type: "GET_NEW_POST",
+      payload: post,
+    });
+  };
+  console.log(post);
+};
 
 export const submitEditProfile = (e, name, surname, title, bio, area) => {
   e.preventDefault();

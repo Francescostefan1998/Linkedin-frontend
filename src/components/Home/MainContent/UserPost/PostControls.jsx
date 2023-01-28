@@ -7,17 +7,26 @@ import { useEffect } from "react";
 import { useStore } from "react-redux";
 import { useSelector } from "react-redux";
 import { AddAComment } from "./AddAComment";
+import { useDispatch } from "react-redux";
+import { newPostAction } from "../../../../redux/actions";
 export const PostControls = ({ post }) => {
   const { user: currentUser } = useSelector((state) => state.user);
+  const { post: mypost } = useSelector((state) => state.post);
   console.log(currentUser);
+  console.log(mypost);
+  console.log(post);
+
   const [like, setLike] = useState(false);
   const [myBody, setBody] = useState({
     username: currentUser._id,
     post: post._id,
   });
-
+  const dispatch = useDispatch();
   const [show, setShow] = useState("falsee");
-  useEffect(() => {}, [currentUser]);
+  useEffect(() => {
+    dispatch(newPostAction(post));
+    console.log("useeffect triggered");
+  }, [like, currentUser, dispatch]);
 
   const fetchLike = async (query) => {
     console.log(query);
@@ -35,6 +44,8 @@ export const PostControls = ({ post }) => {
     );
     console.log(options);
     const data = await response.json();
+    dispatch(newPostAction(post));
+
     return data;
   };
   const checkIfItIsLike = async () => {
