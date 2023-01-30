@@ -17,6 +17,7 @@ export const PostControls = ({ post }) => {
   console.log(post);
 
   const [like, setLike] = useState(false);
+  const [Ilike, setIlike] = useState(false);
   const [myBody, setBody] = useState({
     username: currentUser._id,
     post: post._id,
@@ -48,6 +49,22 @@ export const PostControls = ({ post }) => {
 
     return data;
   };
+  const checkIfILike = async () => {
+    const response = await fetch(
+      `https://hilarious-toothbrush-production.up.railway.app/posts/${post._id}`
+    );
+    const data = await response.json();
+    console.log(data.likes);
+    const findUser = data.likes.find((like) => like === currentUser._id);
+    console.log(findUser);
+    if (findUser) {
+      console.log(like);
+
+      setIlike("icon");
+    } else {
+      setIlike("icon coloredIcon");
+    }
+  };
   const checkIfItIsLike = async () => {
     const response = await fetch(
       `https://hilarious-toothbrush-production.up.railway.app/posts/${post._id}`
@@ -77,11 +94,14 @@ export const PostControls = ({ post }) => {
       setShow("truee");
     }
   };
+  useEffect(() => {
+    checkIfILike();
+  }, [post]);
   return (
     <div>
       <div className="post-controls">
         <div className="control-container" onClick={(e) => handleLike()}>
-          <FaThumbsUp className="icon" />
+          <FaThumbsUp className={Ilike} />
           <span className="text">Like</span>
         </div>
         <div className="control-container" onClick={(e) => showComment()}>

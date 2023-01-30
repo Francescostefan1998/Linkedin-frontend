@@ -9,6 +9,8 @@ import { useSelector } from "react-redux";
 
 export const MainContent = () => {
   const [posts, setPosts] = useState([]);
+  const { post: mypost } = useSelector((state) => state.post);
+
   const { latestPost: latestPostId } = useSelector((state) => state.user);
   const [latestPost, setLatestPost] = useState(null);
   console.log(posts);
@@ -45,6 +47,7 @@ export const MainContent = () => {
     );
     const postsArr = await res.json();
     console.log(postsArr);
+    console.log("fetchposttriggered");
     //const randomPosts = getRandomPosts(postsArr, 20);
     setPosts(postsArr.reverse());
   };
@@ -52,7 +55,7 @@ export const MainContent = () => {
   useEffect(() => {
     getPosts();
     //getLatestPost(latestPostId);
-  }, [latestPostId]);
+  }, [latestPostId, mypost]);
 
   /*useEffect(() => {
   }, [latestPostId]);*/

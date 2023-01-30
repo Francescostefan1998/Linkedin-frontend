@@ -8,8 +8,10 @@ export const PostStats = ({ post }) => {
   console.log(post);
   const { mypost } = useSelector((state) => state.post);
   console.log(mypost);
-  useEffect(() => {}, [mypost]);
 
+  useEffect(() => {
+    console.log("Post changed");
+  }, [mypost]);
   return (
     <div className="post-stats">
       <div className="likes-container">
@@ -17,10 +19,14 @@ export const PostStats = ({ post }) => {
           <FaThumbsUp className="icon" />
         </div>
         <span className="likes-count">
-          {mypost !== undefined ? (
-            <span>{mypost.likes.length}</span>
-          ) : (
-            <span>{post.likes.length}</span>
+          {post.likes && (
+            <span>
+              {mypost !== undefined ? (
+                <span>{mypost.likes.length}</span>
+              ) : (
+                <span>{post.likes.length}</span>
+              )}
+            </span>
           )}
         </span>
       </div>

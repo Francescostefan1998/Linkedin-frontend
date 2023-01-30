@@ -5,11 +5,12 @@ import { PostControls } from "./UserPost/PostControls";
 import { PostDescription } from "./UserPost/PostDescription";
 import { PostStats } from "./UserPost/PostStats";
 import { UserInfo } from "./UserPost/UserInfo";
-
+import { useSelector } from "react-redux";
 const UserPost = ({ post }) => {
   console.log(post);
   const [postData, setPostData] = useState(null);
   const [userData, setUserData] = useState(null);
+  const { post: mypost } = useSelector((state) => state.post);
 
   const getLatestPostUser = async (userId) => {
     /* const options = {
@@ -36,7 +37,7 @@ const UserPost = ({ post }) => {
     }
 
     setPostData(post);
-  }, [post]);
+  }, [post, mypost]);
 
   return (
     <div>
