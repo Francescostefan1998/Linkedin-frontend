@@ -4,7 +4,6 @@ import { FaThumbsUp, FaRegComment, FaShareAlt } from "react-icons/fa";
 import { FiSend } from "react-icons/fi";
 import { useState } from "react";
 import { useEffect } from "react";
-import { useStore } from "react-redux";
 import { useSelector } from "react-redux";
 import { AddAComment } from "./AddAComment";
 import { useDispatch } from "react-redux";

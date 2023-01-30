@@ -36,19 +36,18 @@ export const newPostAction = (post) => {
   console.log(post);
 };
 
-export const submitEditProfile = (e, name, surname, title, bio, area) => {
+export const submitEditProfile = (e, name, surname, title, bio, area, user) => {
   e.preventDefault();
 
   const options = {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzdmNWNmYWQ4MzkzNTAwMTVlOGM0YTUiLCJpYXQiOjE2NzQ0NjUxMjgsImV4cCI6MTY3NTY3NDcyOH0.w0jJ0XgMxZeslQivku-2ce45Dx9rwGNzfuz2_fesLS8",
     },
     body: JSON.stringify({
       name: name,
       surname: surname,
+      email: user.email,
       title: title,
       bio: bio,
       area: area,
@@ -56,7 +55,7 @@ export const submitEditProfile = (e, name, surname, title, bio, area) => {
   };
   return async (dispatch, getState) => {
     const res = await fetch(
-      "https://striveschool-api.herokuapp.com/api/profile/",
+      `https://hilarious-toothbrush-production.up.railway.app/users/${user._id}`,
       options
     );
     console.log(await res.json());

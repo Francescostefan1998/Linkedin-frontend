@@ -23,7 +23,9 @@ export const EditProfileModal = ({ handleClose, show, user }) => {
       <Modal.Body>
         <Form
           onSubmit={(e) =>
-            dispatch(submitEditProfile(e, name, surname, title, bio, area))
+            dispatch(
+              submitEditProfile(e, name, surname, title, bio, area, user)
+            )
           }
         >
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
