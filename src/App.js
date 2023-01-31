@@ -39,7 +39,7 @@ function App() {
         <Route path="/profile/experiences" element={<EditExperiences />} />
         <Route path="/message" element={<MessageBarMobile />} />
       </Routes>
-      <MessageBar myclass={"smallSize"} />
+      <MessageBar myclass={"smallSize"} bigSize={"small"} />
     </BrowserRouter>
   );
 }

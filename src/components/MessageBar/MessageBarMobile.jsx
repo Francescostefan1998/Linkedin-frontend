@@ -7,7 +7,7 @@ const MessageBarMobile = () => {
   const [fullSize, setFullSixe] = useState("fullSize");
   return (
     <div>
-      <MessageBar myclass={fullSize} />
+      <MessageBar myclass={fullSize} bigSize={"bigSize"} />
     </div>
   );
 };

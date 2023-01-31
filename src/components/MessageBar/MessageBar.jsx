@@ -17,7 +17,7 @@ import SingleChat from "./SingleChat";
 import { AiFillWechat } from "react-icons/ai";
 import { newTextArea } from "../../redux/actions";
 import newChatReducer from "../../redux/reducers/NewChatReducer";
-const MessageBar = ({ myclass }) => {
+const MessageBar = ({ myclass, bigSize }) => {
   const [arrow, setArrow] = useState("off");
   const [write, setWrite] = useState("off");
   const { user } = useSelector((state) => state.user);
