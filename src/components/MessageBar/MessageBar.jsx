@@ -17,7 +17,7 @@ import SingleChat from "./SingleChat";
 import { AiFillWechat } from "react-icons/ai";
 import { newTextArea } from "../../redux/actions";
 import newChatReducer from "../../redux/reducers/NewChatReducer";
-const MessageBar = () => {
+const MessageBar = ({ myclass }) => {
   const [arrow, setArrow] = useState("off");
   const [write, setWrite] = useState("off");
   const { user } = useSelector((state) => state.user);
@@ -28,58 +28,67 @@ const MessageBar = () => {
     dispatch(getUserProfile());
   }, []);
   return (
-    <div id={arrow !== "off" ? "messageBar" : "messageBar1"}>
-      <div className="messageBarFlex" id="messageBarTitle">
-        <div className="messageBarFlex">
-          <div id="messageBarImage">
-            {user && <img src={user.image} alt="image" />}
-          </div>
-          <div>
-            <h5>Message</h5>
-          </div>
-        </div>
-        <div className="messageBarFlex" id="icons">
-          <div className="icon">
-            <RxDotsHorizontal />
-          </div>
-          <div className="icon">
-            <TfiPencilAlt
-              onClick={(e) => {
-                write !== "off" ? setWrite("off") : setWrite("on");
-              }}
-            />
-          </div>
-          <div
-            className="icon"
-            onClick={(e) => {
-              arrow !== "on" ? setArrow("on") : setArrow("off");
-            }}
-          >
-            {arrow !== "on" ? <MdKeyboardArrowDown /> : <MdKeyboardArrowUp />}
-          </div>
-        </div>
-      </div>
-      <div id="messageBarMain">
-        <div id="messageBarSearch" className="messageBarFlex">
+    <div className="myMessageBar">
+      <div
+        id={arrow !== "off" ? "messageBar" : "messageBar1"}
+        className={myclass}
+      >
+        <div className="messageBarFlex" id="messageBarTitle">
           <div className="messageBarFlex">
-            <div className="icon">
-              <BiSearchAlt2 />
+            <div id="messageBarImage">
+              {user && <img src={user.image} alt="image" />}
             </div>
             <div>
-              <input type="search" placeholder="Search message" />
+              <h5>Message</h5>
             </div>
           </div>
-          <div className="messageBarFlex">
-            <BsFilterLeft />
+          <div className="messageBarFlex" id="icons">
+            <div className="icon">
+              <RxDotsHorizontal />
+            </div>
+            <div className="icon">
+              <TfiPencilAlt
+                onClick={(e) => {
+                  write !== "off" ? setWrite("off") : setWrite("on");
+                }}
+              />
+            </div>
+            <div
+              className="icon"
+              onClick={(e) => {
+                arrow !== "on" ? setArrow("on") : setArrow("off");
+              }}
+            >
+              {arrow !== "on" ? <MdKeyboardArrowDown /> : <MdKeyboardArrowUp />}
+            </div>
           </div>
         </div>
-        <div id="scroll-messageBar">
-          {allChat.map((object, i) => (
-            <SingleChat chatsingle={object} key={i} />
-          ))}
+        <div id="messageBarMain">
+          <div id="messageBarSearch" className="messageBarFlex">
+            <div className="messageBarFlex">
+              <div className="icon">
+                <BiSearchAlt2 />
+              </div>
+              <div>
+                <input type="search" placeholder="Search message" />
+              </div>
+            </div>
+            <div className="messageBarFlex">
+              <BsFilterLeft />
+            </div>
+          </div>
+          <div id="scroll-messageBar">
+            {allChat.map((object, i) => (
+              <SingleChat chatsingle={object} key={i} />
+            ))}
+          </div>
         </div>
+        {write !== "off" ? (
+          <MessageTextArea setWrite={setWrite} />
+        ) : (
+          <div></div>
+        )}
       </div>
-      {write !== "off" ? <MessageTextArea setWrite={setWrite} /> : <div></div>}
     </div>
   );
 };

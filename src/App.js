@@ -10,6 +10,18 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { EditExperiences } from "./components/Experiences/EditExperiences";
 import MessageBar from "./components/MessageBar/MessageBar";
+import MessageBarMobile from "./components/MessageBar/MessageBarMobile";
+import { useLocation } from "react-router-dom";
+function AppWrapper() {
+  const location = useLocation();
+
+  return (
+    <>
+      {location.pathname !== "/message" && <NavBar />}
+      {/* ... rest of your code ... */}
+    </>
+  );
+}
 function App() {
   const dispatch = useDispatch();
 
@@ -19,14 +31,15 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
+      <AppWrapper />
       <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route path="/profile" element={<Profile otherProfile={false}/>} />
-        <Route path="/profile/:id" element={<Profile otherProfile={true}/>} />
+        <Route path="/profile" element={<Profile otherProfile={false} />} />
+        <Route path="/profile/:id" element={<Profile otherProfile={true} />} />
         <Route path="/profile/experiences" element={<EditExperiences />} />
+        <Route path="/message" element={<MessageBarMobile />} />
       </Routes>
-      <MessageBar />
+      <MessageBar myclass={"smallSize"} />
     </BrowserRouter>
   );
 }
