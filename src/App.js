@@ -12,13 +12,27 @@ import { EditExperiences } from "./components/Experiences/EditExperiences";
 import MessageBar from "./components/MessageBar/MessageBar";
 import MessageBarMobile from "./components/MessageBar/MessageBarMobile";
 import { useLocation } from "react-router-dom";
+import MessageBartextAreaMobile from "./components/MessageBar/MessageBartextAreaMobile";
 function AppWrapper() {
   const location = useLocation();
 
   return (
     <>
-      {location.pathname !== "/message" && <NavBar />}
+      {location.pathname !== "/message" &&
+        location.pathname !== "/textarea" && <NavBar />}
       {/* ... rest of your code ... */}
+    </>
+  );
+}
+function MessageWrapper() {
+  const location = useLocation();
+
+  return (
+    <>
+      {location.pathname !== "/message" &&
+        location.pathname !== "/textarea" && (
+          <MessageBar myclass={"smallSize"} bigSize={"small"} />
+        )}
     </>
   );
 }
@@ -38,8 +52,9 @@ function App() {
         <Route path="/profile/:id" element={<Profile otherProfile={true} />} />
         <Route path="/profile/experiences" element={<EditExperiences />} />
         <Route path="/message" element={<MessageBarMobile />} />
+        <Route path="/textarea" element={<MessageBartextAreaMobile />} />
       </Routes>
-      <MessageBar myclass={"smallSize"} bigSize={"small"} />
+      <MessageWrapper />
     </BrowserRouter>
   );
 }

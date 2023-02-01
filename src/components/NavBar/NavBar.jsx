@@ -54,7 +54,9 @@ export const NavBar = () => {
         const users = await res.json();
 
         const filteredUsers = users.filter(
-          (user) => user.name.toLowerCase().includes(term.toLowerCase()) || user.surname.toLowerCase().includes(term.toLowerCase())
+          (user) =>
+            user.name.toLowerCase().includes(term.toLowerCase()) ||
+            user.surname.toLowerCase().includes(term.toLowerCase())
         );
         setSearchResults(filteredUsers);
       }, 500);
@@ -106,7 +108,7 @@ export const NavBar = () => {
                   results={searchResults}
                   handleClickResult={handleClickResult}
                 />
-              ) : (null)
+              ) : null
             ) : null}
           </div>
         </div>
@@ -153,7 +155,10 @@ export const NavBar = () => {
             <div className="navBarIcons-text">Work</div>
           </div>
           <div className="navBarIcons">
-            <div className="navBarIcons-icon">
+            <div
+              className="navBarIcons-icon"
+              onClick={(e) => navigate("/message")}
+            >
               <Link href="#action2">
                 <TbMessageCircle />
                 <Badge bg="danger" className="navBarBadge">
