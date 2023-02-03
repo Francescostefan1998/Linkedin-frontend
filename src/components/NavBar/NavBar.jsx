@@ -122,7 +122,10 @@ export const NavBar = () => {
             <div className="navBarIcons-text">Search</div>
           </div>
           <div className="navBarIcons">
-            <div className="navBarIcons-icon" onClick={(e) => navigate("/")}>
+            <div
+              className="navBarIcons-icon"
+              onClick={(e) => navigate("/home")}
+            >
               <Link href="#action1">
                 <AiFillHome />
                 <Badge bg="danger" className="navBarBadge">

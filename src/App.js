@@ -13,13 +13,15 @@ import MessageBar from "./components/MessageBar/MessageBar";
 import MessageBarMobile from "./components/MessageBar/MessageBarMobile";
 import { useLocation } from "react-router-dom";
 import MessageBartextAreaMobile from "./components/MessageBar/MessageBartextAreaMobile";
+import LoginLoading from "./components/Login/LoginInterface/LoginLoading";
 function AppWrapper() {
   const location = useLocation();
 
   return (
     <>
       {location.pathname !== "/message" &&
-        location.pathname !== "/textarea" && <NavBar />}
+        location.pathname !== "/textarea" &&
+        location.pathname !== "/" && <NavBar />}
       {/* ... rest of your code ... */}
     </>
   );
@@ -30,7 +32,8 @@ function MessageWrapper() {
   return (
     <>
       {location.pathname !== "/message" &&
-        location.pathname !== "/textarea" && (
+        location.pathname !== "/textarea" &&
+        location.pathname !== "/" && (
           <MessageBar myclass={"smallSize"} bigSize={"small"} />
         )}
     </>
@@ -47,7 +50,8 @@ function App() {
     <BrowserRouter>
       <AppWrapper />
       <Routes>
-        <Route path="/" element={<Homepage />} />
+        <Route path="/" element={<LoginLoading />} />
+        <Route path="/home" element={<Homepage />} />
         <Route path="/profile" element={<Profile otherProfile={false} />} />
         <Route path="/profile/:id" element={<Profile otherProfile={true} />} />
         <Route path="/profile/experiences" element={<EditExperiences />} />

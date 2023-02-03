@@ -11,7 +11,7 @@ const MessageNavbar = () => {
       <div className="messageNavbar-comp">
         <div
           className="messageNavbar-innerComponent  back"
-          onClick={(e) => navigate("/")}
+          onClick={(e) => navigate("/home")}
         >
           <AiOutlineArrowLeft />
         </div>
