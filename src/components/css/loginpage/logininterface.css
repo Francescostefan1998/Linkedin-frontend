@@ -1,0 +1,65 @@
+.loginInterface-main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10%;
+}
+
+.inner-comp-login{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.inner-comp-login.image{
+min-width: 100px;
+
+width: 15%;
+overflow: hidden;
+height: fit-content;
+}
+
+.inner-comp-login.image img{
+    width: 100%;
+    object-fit: contain;
+}
+
+.inner-comp-login.table{
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    width: 50%;
+    overflow: hidden;
+    align-items: flex-start;
+    height: 160px;
+    margin-block: 3%;
+}
+.inner-comp-login.table div{
+    height: 50%;
+    border: 1px solid rgb(159, 159, 159);
+    width: 100%;
+}
+
+.inner-comp-login.join .blue-text{
+    color: rgb(0, 96, 240);
+}
+
+.inner-comp-login p{
+    font-size: 20px;
+}
+
+.inner-comp-login.welcome p{
+    color: rgb(99, 99, 99);
+}
+
+.login-footer{
+    width: 100%;
+height: 10%;
+position: fixed;
+bottom: 0;
+left: 0;
+border-top: solid rgb(147, 147, 147) 1px;
+}
