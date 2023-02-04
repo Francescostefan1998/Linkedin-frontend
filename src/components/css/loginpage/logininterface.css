@@ -108,10 +108,7 @@ width: 100%;
         font-size: 26px;
         cursor: pointer;
     }
-    p {
-        text-align: center;
-        padding-inline: 10px;
-    } 
+   
     @media screen and (max-width: 778px) {
        .login-footer-component{
         display: none;
