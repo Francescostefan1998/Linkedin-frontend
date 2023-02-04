@@ -7,20 +7,31 @@ import OtherAccount from "./OtherAccount";
 import LoginFooter from "./LoginFooter";
 import { useDispatch } from "react-redux";
 import { getUserProfile } from "../../../redux/actions";
+import EditUserNameLogin from "./EditUserNameLogin";
+import { editableInputTypes } from "@testing-library/user-event/dist/utils";
 const LoginInterface = () => {
+  const [edit, setEdit] = useState(false);
+  console.log(edit);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const handleProfileSelection = async () => {
-    await dispatch(getUserProfile("63d14dae49b19c47d1ba1938"));
-    navigate("/home");
+  const handleProfileSelection = (query) => {
+    console.log(query);
+    if (query === "true") {
+      setEdit("true");
+    } else {
+      setTimeout(() => setEdit("false"), 0);
+    }
   };
+
   const hadleProfilePersonal = async () => {
     await dispatch(getUserProfile("63d14dae49b19c47d1ba1938"));
 
     navigate("/home");
   };
-
+  useEffect(() => {
+    console.log(edit);
+  }, [edit]);
   return (
     <div>
       <div className="loginInterface-main">
@@ -45,8 +56,18 @@ const LoginInterface = () => {
           <div className="cell cell1" onClick={() => hadleProfilePersonal()}>
             <MyAccount />
           </div>
-          <div className="cell cell2" onClick={() => handleProfileSelection()}>
+          <div
+            className="cell cell2"
+            onClick={() => handleProfileSelection("true")}
+          >
             <OtherAccount />
+            {edit === "true" ? (
+              <EditUserNameLogin
+                handleProfileSelection={() => handleProfileSelection("false")}
+              />
+            ) : (
+              ""
+            )}
           </div>
         </div>
         <div className="inner-comp-login join">
