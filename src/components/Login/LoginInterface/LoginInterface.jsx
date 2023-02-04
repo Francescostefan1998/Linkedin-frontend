@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import "../../css/loginpage/logininterface.css";
+import MyAccount from "./MyAccount";
+import OtherAccount from "./OtherAccount";
 import LoginFooter from "./LoginFooter";
 const LoginInterface = () => {
   return (
@@ -24,12 +26,16 @@ const LoginInterface = () => {
           </div>
         </div>
         <div className="inner-comp-login table">
-          <div>fra</div>
-          <div>someone</div>
+          <div className="cell cell1">
+            <MyAccount />
+          </div>
+          <div className="cell cell2">
+            <OtherAccount />
+          </div>
         </div>
         <div className="inner-comp-login join">
           <p>
-            New to LinkedIn?
+            New to LinkedIn?{" "}
             <span className="blue-text">
               <strong>Join now</strong>
             </span>

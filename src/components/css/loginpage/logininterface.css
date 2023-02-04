@@ -37,14 +37,24 @@ height: fit-content;
     height: 160px;
     margin-block: 3%;
 }
-.inner-comp-login.table div{
+.inner-comp-login.table .cell{
     height: 50%;
     border: 1px solid rgb(159, 159, 159);
     width: 100%;
+    display: flex;
+    align-items: center;
+}
+.inner-comp-login.table .cell.cell1{
+    height: 50%;
+    border-bottom: 0px solid transparent;
+    width: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .inner-comp-login.join .blue-text{
     color: rgb(0, 96, 240);
+    cursor: pointer;
 }
 
 .inner-comp-login p{
@@ -57,9 +67,71 @@ height: fit-content;
 
 .login-footer{
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 height: 10%;
 position: fixed;
+gap: 2%;
+padding-inline: 5%;
 bottom: 0;
 left: 0;
 border-top: solid rgb(147, 147, 147) 1px;
 }
+.login-footer-component{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: center;
+    gap: 5px;
+}
+.login-footer-stay{
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: center;
+    gap: 5px;
+}
+
+
+.login-footer-component.logo div{
+    width: 80px;
+    overflow: hidden;
+}
+
+.login-footer-component.logo div img{
+width: 100%;
+    object-fit: contain;}
+
+
+    .login-footer-component .icon{
+        font-size: 26px;
+        cursor: pointer;
+    }
+    p {
+        text-align: center;
+        padding-inline: 10px;
+    } 
+    @media screen and (max-width: 778px) {
+       .login-footer-component{
+        display: none;
+       }
+       .login-footer-stay{
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+        justify-content: center;
+        gap: 5px;
+    }
+    .inner-comp-login.table{
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        width: 90%;
+        overflow: hidden;
+        align-items: flex-start;
+        height: 160px;
+        margin-block: 3%;
+    }
+    
+      }
