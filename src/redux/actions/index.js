@@ -1,4 +1,5 @@
-export const getUserProfile = () => {
+export const getUserProfile = (userId) => {
+  console.log(userId);
   return async (dispatch, getState) => {
     /*const options = {
       headers: {
@@ -6,15 +7,25 @@ export const getUserProfile = () => {
           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MzdmNWNmYWQ4MzkzNTAwMTVlOGM0YTUiLCJpYXQiOjE2NzQ0NjUxMjgsImV4cCI6MTY3NTY3NDcyOH0.w0jJ0XgMxZeslQivku-2ce45Dx9rwGNzfuz2_fesLS8",
       },
     };*/
-
-    const res = await fetch(
-      "https://hilarious-toothbrush-production.up.railway.app/users/63d14dae49b19c47d1ba1938"
-    );
-    const userData = await res.json();
-    dispatch({
-      type: "GET_USER_PROFILE",
-      payload: userData,
-    });
+    if (userId) {
+      const res = await fetch(
+        `https://hilarious-toothbrush-production.up.railway.app/users/${userId}`
+      );
+      const userData = await res.json();
+      dispatch({
+        type: "GET_USER_PROFILE",
+        payload: userData,
+      });
+    } else {
+      const res = await fetch(
+        `https://hilarious-toothbrush-production.up.railway.app/users/63d14dae49b19c47d1ba1938`
+      );
+      const userData = await res.json();
+      dispatch({
+        type: "GET_USER_PROFILE",
+        payload: userData,
+      });
+    }
   };
 };
 export const newTextArea = (userName) => {

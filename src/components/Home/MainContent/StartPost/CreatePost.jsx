@@ -10,24 +10,24 @@ export const CreatePost = () => {
   const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
-  const [showNewPostModal, setShowNewPostModal] = useState(false)
+  const [showNewPostModal, setShowNewPostModal] = useState(false);
 
   const handleClose = () => setShowNewPostModal(false);
   const handleShow = () => setShowNewPostModal(true);
 
   useEffect(() => {
-    dispatch(getUserProfile());
+    dispatch(getUserProfile(user._id));
   }, []);
-
 
   return (
     <div className="create-post">
-      {user && 
-      <div className="img-container">
-        <img src={user.image} />  
-      </div>}
-      <input type="text" placeholder="Start a post" onClick={handleShow}/>
-      <NewPost user={user} handleClose={handleClose} show={showNewPostModal}/>
+      {user && (
+        <div className="img-container">
+          <img src={user.image} />
+        </div>
+      )}
+      <input type="text" placeholder="Start a post" onClick={handleShow} />
+      <NewPost user={user} handleClose={handleClose} show={showNewPostModal} />
     </div>
   );
 };

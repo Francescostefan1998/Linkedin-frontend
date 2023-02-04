@@ -11,7 +11,7 @@ export const YouDropDown = () => {
   const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getUserProfile());
+    dispatch(getUserProfile(user._id));
   }, []);
   return (
     <div>

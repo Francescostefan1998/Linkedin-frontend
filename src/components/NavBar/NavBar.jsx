@@ -71,7 +71,7 @@ export const NavBar = () => {
   };
 
   useEffect(() => {
-    dispatch(getUserProfile());
+    dispatch(getUserProfile(user._id));
   }, []);
 
   return (

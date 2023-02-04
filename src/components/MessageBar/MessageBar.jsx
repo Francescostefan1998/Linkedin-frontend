@@ -25,7 +25,7 @@ const MessageBar = ({ myclass, bigSize }) => {
   console.log(allChat);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getUserProfile());
+    dispatch(getUserProfile(user._id));
   }, []);
   return (
     <div className="myMessageBar">

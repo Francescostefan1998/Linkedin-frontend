@@ -7,7 +7,7 @@ export const ProfileInfo = () => {
   console.log(user);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getUserProfile());
+    dispatch(getUserProfile(user._id));
   }, []);
 
   return (

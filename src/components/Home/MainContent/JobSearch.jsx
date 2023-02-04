@@ -7,7 +7,7 @@ const JobSearch = () => {
   const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getUserProfile());
+    dispatch(getUserProfile(user._id));
   }, []);
   return (
     <div className="job-search">
