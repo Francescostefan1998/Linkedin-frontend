@@ -11,6 +11,8 @@ import EditUserNameLogin from "./EditUserNameLogin";
 import { editableInputTypes } from "@testing-library/user-event/dist/utils";
 const LoginInterface = () => {
   const [edit, setEdit] = useState(false);
+  const [joinNow, setJoinNow] = useState(false);
+
   console.log(edit);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -21,6 +23,14 @@ const LoginInterface = () => {
       setEdit("true");
     } else {
       setTimeout(() => setEdit("false"), 0);
+    }
+  };
+  const handleSubscribe = (query) => {
+    console.log(query);
+    if (query === "true") {
+      setJoinNow("true");
+    } else {
+      setTimeout(() => setJoinNow("false"), 0);
     }
   };
 
@@ -73,8 +83,15 @@ const LoginInterface = () => {
         <div className="inner-comp-login join">
           <p>
             New to LinkedIn?{" "}
-            <span className="blue-text">
+            <span className="blue-text" onClick={() => handleSubscribe("true")}>
               <strong>Join now</strong>
+              {joinNow === "true" ? (
+                <EditUserNameLogin
+                  handleProfileSelection={() => handleSubscribe("false")}
+                />
+              ) : (
+                ""
+              )}
             </span>
           </p>
         </div>

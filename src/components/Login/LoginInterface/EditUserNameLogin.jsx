@@ -6,13 +6,16 @@ const EditUserNameLogin = (props) => {
   const [close, setClose] = useState(false);
 
   const navigate = useNavigate();
+  function handleClick() {
+    props.handleProfileSelection();
+  }
   return (
     <div className="editUserNameLogin-biggest">
       <div id="editUserNameLogin-main"></div>
       <div id="editUserNameLogin-main-interface">
         <div
           className="editUserNameLogin-inner-component close"
-          onClick={props.handleProfileSelection}
+          onClick={handleClick}
         >
           <GrFormClose />
         </div>
