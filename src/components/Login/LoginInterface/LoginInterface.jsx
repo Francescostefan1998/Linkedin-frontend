@@ -74,6 +74,7 @@ const LoginInterface = () => {
             {edit === "true" ? (
               <EditUserNameLogin
                 handleProfileSelection={() => handleProfileSelection("false")}
+                none="editUserNameLogin-main-none"
               />
             ) : (
               ""
@@ -88,6 +89,7 @@ const LoginInterface = () => {
               {joinNow === "true" ? (
                 <EditUserNameLogin
                   handleProfileSelection={() => handleSubscribe("false")}
+                  none="display-it"
                 />
               ) : (
                 ""

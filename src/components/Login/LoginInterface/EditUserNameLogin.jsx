@@ -36,7 +36,33 @@ const EditUserNameLogin = (props) => {
             <input placeholder="password" type="password" />
           </div>
         </div>
-        <div className="editUserNameLogin-inner-component confirm">confirm</div>
+        <div
+          id={props.none}
+          className="editUserNameLogin-inner-component password"
+        >
+          <div>
+            <h5>Confirm password</h5>
+          </div>
+          <div className="editUserNameLogin-inner-component-password-input">
+            <input placeholder="password" type="password" />
+          </div>
+        </div>
+        <div className="editUserNameLogin-inner-component confirm mt-3 mb-3">
+          confirm
+        </div>
+        <div
+          id={props.none}
+          className="editUserNameLogin-inner-component password mb-3"
+        >
+          <div></div>
+          <button className="editUserNameLogin-inner-component-button">
+            <img
+              src="https://images.novatech.co.uk/website2015/images/checkout/google-logo.png"
+              alt="f"
+            />
+            log in with google
+          </button>
+        </div>
       </div>
     </div>
   );
